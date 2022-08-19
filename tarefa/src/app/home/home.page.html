@@ -1,0 +1,52 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>Atividade - 1</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <div id="container">
+    <h1>Cadastro de contas</h1>
+
+    <ion-item>
+      <ion-label position="floating">Nome</ion-label>
+      <ion-input type="text" [(ngModel)]="nome"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Senha</ion-label>
+      <ion-input type="password" [(ngModel)]="senha"></ion-input>
+    </ion-item>
+
+    
+    <ion-button color="primary" (click)="adicionarFim()">Adicionar</ion-button>
+
+
+    
+
+    <ion-grid *ngIf="contas.length > 0">
+      <ion-row>
+        <ion-col>
+          <strong>Nome</strong>
+        </ion-col>
+        <ion-col>
+          <strong>Senha</strong>
+        </ion-col>
+        <ion-col>
+
+        </ion-col>
+      </ion-row>
+      <ion-row *ngFor="let item of contas; let pos = index">
+        <ion-col>
+          {{ item.nome }}
+        </ion-col>
+        <ion-col>
+          {{ item.senha}}
+        </ion-col>
+        <ion-col>
+          <ion-icon name="trash-outline" (click)="confirmarExclusao()">Remover</ion-icon>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
+</ion-content>
