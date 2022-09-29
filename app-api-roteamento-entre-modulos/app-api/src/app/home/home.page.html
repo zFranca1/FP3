@@ -1,0 +1,37 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+      Usuários
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  
+  <ion-item *ngFor="let user of users.data">
+    <ion-avatar slot="start">
+      <img [src]="user.avatar">
+      <!-- <img src={{user.avatar}}> -->
+    </ion-avatar>
+    <ion-label>
+      <div (click)="goToUserDetailPage(user)">
+        {{ user.first_name + ' ' + user.last_name }}
+      </div>
+      <p>{{ user.email }}</p>
+    </ion-label>
+    
+  </ion-item>
+
+  <ion-button (click)="previous()">
+    <ion-icon name="chevron-back-outline" ></ion-icon>
+  </ion-button>
+  <ion-button (click)="next()">
+    <ion-icon name="chevron-forward-outline"></ion-icon>
+  </ion-button>
+  <ion-button routerLink="/user-add">
+    Add User
+  </ion-button>
+  <ion-button (click)="goToUserAddPage()">
+    Add User by method
+  </ion-button>
+</ion-content>
