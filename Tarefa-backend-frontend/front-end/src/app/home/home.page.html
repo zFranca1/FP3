@@ -1,0 +1,46 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title> Accounts </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <div id="container">
+    <ion-item>
+      <ion-label position="floating">Login</ion-label>
+      <ion-input type="text" [(ngModel)]="login"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Password</ion-label>
+      <ion-input type="password" [(ngModel)]="password"></ion-input>
+    </ion-item>
+
+    <ion-button color="primary" (click)="createAccount()">Create Account</ion-button>
+
+    <ion-grid *ngIf="accounts.length > 0">
+      <ion-row>
+        <ion-col>
+          <strong>Login</strong>
+        </ion-col>
+        <ion-col>
+          <strong>Password</strong>
+        </ion-col>
+        
+        <ion-col>
+        </ion-col>
+      </ion-row>
+      <ion-row *ngFor="let item of accounts; let pos = index">
+        <ion-col>
+          {{ item.login }}
+        </ion-col>
+        <ion-col>
+          {{ item.password }}
+        </ion-col>
+        <ion-col>
+          <ion-icon name="trash-outline" (click)="deleteAccount(item.id)">Remove</ion-icon>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
+</ion-content>
